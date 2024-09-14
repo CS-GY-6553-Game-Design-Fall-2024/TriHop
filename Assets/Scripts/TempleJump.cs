@@ -16,6 +16,7 @@ public class TempleJump : MonoBehaviour
 
     [Header("=== Game Mechanic Controllers ===")]
     [SerializeField] private GroundSpawner m_groundSpawner;
+    [SerializeField] private PlayerInput m_player;
 
     [Header("=== Debug Settings ===")]
     [SerializeField] private bool m_debugMode = false;
@@ -31,7 +32,7 @@ public class TempleJump : MonoBehaviour
     private void Update() {
         UpdateDebug();
     }
-    
+
     private void UpdateDebug() {
         if (Input.GetKeyDown(m_activateDebugKey)) ToggleDebugMode();
         if (!m_debugMode) return;
@@ -44,7 +45,8 @@ public class TempleJump : MonoBehaviour
         m_gameState = GameState.Menu;
 
         // Secondly, deactive any controllers or gameplay elements involved in the Play mode
-        m_groundSpawner.enabled = false;
+        m_groundSpawner.gameObject.SetActive(false);
+        m_player.gameObject.SetActive(false);
 
         // Lastly, hide the playing canvas and show the menu canvas
         m_playingCanvas.gameObject.SetActive(false);
@@ -56,7 +58,8 @@ public class TempleJump : MonoBehaviour
         m_gameState = GameState.Play;
 
         // Secondly, activate any controllers or gameplay elements involved in the Play mode
-        m_groundSpawner.enabled = true;
+        m_groundSpawner.gameObject.SetActive(true);
+        m_player.gameObject.SetActive(true);
 
         // Lastly, hide the menu canvas and show the playing canvas
         m_menuCanvas.gameObject.SetActive(false);
