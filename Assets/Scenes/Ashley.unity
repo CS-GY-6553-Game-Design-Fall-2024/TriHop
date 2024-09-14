@@ -319,6 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundPrefab: {fileID: 4869513122884939156, guid: cb8b3c12e6acd574bacd1773683b43dc, type: 3}
+  obstaclePrefab: {fileID: 1970523187593155194, guid: 5daa9dec99e8a4104b40569413334792, type: 3}
   gameDuration: 180
   initialSpeed: 2
   maxSpeed: 10
