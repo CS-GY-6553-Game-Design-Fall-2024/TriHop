@@ -5,6 +5,7 @@ public class GroundSpawner : MonoBehaviour
 {
     public static GroundSpawner Instance { get; private set; }
     public GameObject groundPrefab;
+    public GameObject obstaclePrefab;
     public float gameDuration = 180f;
     public float initialSpeed = 2f;
     public float maxSpeed = 10f;
@@ -17,7 +18,7 @@ public class GroundSpawner : MonoBehaviour
     {
         // Create the ground on start screen
         for (int i = -10; i < 20; i++)
-        {
+        {   
             SpawnGroundRow(-2f, i);
             SpawnGroundRow(2f, i);
         }
@@ -42,7 +43,8 @@ public class GroundSpawner : MonoBehaviour
 
     void SpawnGroundRow(float x, float y)
     {
-        Instantiate(groundPrefab, new Vector3(x, y, 0), Quaternion.identity);
+        GameObject ground = Instantiate(groundPrefab, new Vector3(x, y, 0), Quaternion.identity);
+        ObstacleGenerator.SpawnObstacle(ground, obstaclePrefab, new Vector3(x, y, 0));
     }
 
     void OnEnable()
