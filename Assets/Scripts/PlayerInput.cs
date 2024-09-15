@@ -8,7 +8,10 @@ public class PlayerInput : MonoBehaviour
     public static PlayerInput current;
     public enum PlayerSide { Left = -1, Right = 1 }
 
-    // Sound variables
+    [Header("=== References ===")]
+    [SerializeField] private GroundSpawner m_groundSpawner;
+
+    [Header("=== Sound Settings ===")]
     public AudioSource audioSource;
     public AudioClip jumpSound;
     public AudioClip collisionSound;
@@ -17,14 +20,17 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private Collider m_collider;
     [SerializeField] private Transform m_leftTarget;
     [SerializeField] private Transform m_rightTarget;
-    [SerializeField] private float m_jumpSpeed = 2f;
     [SerializeField] private float m_maxSize = 1f;
     [SerializeField] private float m_minSize = 0.75f;
     [SerializeField] private AnimationCurve m_sizeCurve;
+    [SerializeField] private float m_minJumpSpeed = 10f;
+    [SerializeField] private float m_maxJumpSpeed = 20f;
+    [SerializeField] private AnimationCurve m_jumpIncreaseCurve;
     [SerializeField] private float m_loseSpinSpeed = 10f;
     [SerializeField] private float m_winSpinSpeed = 5f;
 
     // Private variables
+    private float m_jumpSpeed = 10f;
     private bool m_jumping = false;
     private float m_totalJumpTime, m_jumpStartTime;
     private Vector3 m_startPos, m_endPos;
@@ -48,6 +54,8 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        // Calculate the current jump speed based on how far in the game we've gotten
+        m_jumpSpeed = m_minJumpSpeed + m_jumpIncreaseCurve.Evaluate(m_groundSpawner.elapsedFraction)*(m_maxJumpSpeed-m_minJumpSpeed);
 
         // Depending on what the current game mode state is, we have to adjust he behavior of this player
         switch (TempleJump.current.gameState)
@@ -164,6 +172,9 @@ public class PlayerInput : MonoBehaviour
         // We prevent jumping if we're not jumping
         if (!m_jumping) return;
 
+        // Disablet the collider
+        m_collider.enabled = false;
+
         // How much of the fraction of the journey are we at? We clamp between 0 and 1
         float journeyFrac = Mathf.Clamp((Time.time - m_jumpStartTime) / m_totalJumpTime, 0f, 1f);
 
@@ -177,6 +188,7 @@ public class PlayerInput : MonoBehaviour
         // If we are sufficiently close to the target position (or if journeyFrac == 1f), then we stop the jump
         if (journeyFrac == 1f)
         {
+            m_collider.enabled = true;
             m_jumping = false;
         }
     }

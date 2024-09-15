@@ -19,6 +19,7 @@ public class GroundSpawner : MonoBehaviour
     [SerializeField] private List<GameObject> m_groundObjects;
 
     [SerializeField] private float elapsedTime = 0f;
+    public float elapsedFraction => Mathf.Clamp(elapsedTime / gameDuration, 0f, 1f);
     public bool GameEnded = false;
 
     // Because this script can be activated and deactivate by `TempleJump`, we want to control this scripts on and off state via `OnEnable()` and `OnDisable()`.
