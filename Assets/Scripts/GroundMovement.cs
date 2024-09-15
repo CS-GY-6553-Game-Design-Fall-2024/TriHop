@@ -3,7 +3,7 @@ using UnityEngine;
 public class GroundMovement : MonoBehaviour
 {
     public static event RowDeletedDelegate OnRowDeleted;
-    public delegate void RowDeletedDelegate(float x);
+    public delegate void RowDeletedDelegate(GameObject g, float x);
 
     private static float speed = 5f;
 
@@ -20,7 +20,7 @@ public class GroundMovement : MonoBehaviour
 
     void OnDestroy()
     {
-        OnRowDeleted?.Invoke(transform.position.x);
+        OnRowDeleted?.Invoke(this.gameObject, transform.position.x);
     }
 
     public static void SetSpeed(float newSpeed)

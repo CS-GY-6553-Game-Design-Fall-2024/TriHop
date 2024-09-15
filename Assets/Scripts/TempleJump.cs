@@ -20,6 +20,7 @@ public class TempleJump : MonoBehaviour
     public KeyCode interactionKey => m_interactionKey;  // Make it accessible to onlookers
     [SerializeField] private GroundSpawner m_groundSpawner;
     [SerializeField] private PlayerInput m_player;
+    [SerializeField] private bool m_canSetPlayMode = true;
 
     [Header("=== Debug Settings ===")]
     [SerializeField] private bool m_debugMode = false;
@@ -37,8 +38,13 @@ public class TempleJump : MonoBehaviour
     }
 
     private void Update() {
-        // If we're not in the menu, then the space bar interaction that "starts" the play mode shouldn't work.
-        if (m_gameState == GameState.Menu && Input.GetKeyDown(m_interactionKey)) SetPlayState();
+        // We need to enable play state if the user has pressed the interaction key while in the menu scene
+        // If we're not in the menu, then the interaction key that "starts" the play mode shouldn't work.
+        // One caveat is that if the interaction key is already held down (i.e. they lost during gameplay), then...
+        //      ... without a check for that, this will automatically default to being called.
+        //      So we need to check if the player is transitioning from play to menu state, and use a boolean check here.
+        if (m_gameState == GameState.Menu && m_canSetPlayMode && Input.GetKey(m_interactionKey)) SetPlayState();
+        m_canSetPlayMode = !Input.GetKey(m_interactionKey);
         // Purely for debug purposes
         UpdateDebug();
     }
@@ -57,6 +63,9 @@ public class TempleJump : MonoBehaviour
         // Secondly, deactive any controllers or gameplay elements involved in the Play mode
         m_groundSpawner.gameObject.SetActive(false);
         m_player.gameObject.SetActive(false);
+
+        // Thirdly, use the boolean check to prevent the interaction key from auto-triggering the play mode if held down.
+        m_canSetPlayMode = !Input.GetKey(m_interactionKey);
 
         // Lastly, hide the playing canvas and show the menu canvas
         m_playingCanvas.gameObject.SetActive(false);

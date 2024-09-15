@@ -101,7 +101,7 @@ public class PlayerInput : MonoBehaviour
 	{
 		Time.timeScale = 1;
 		ObstacleGenerator.ResetObstacles();
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		TempleJump.current.SetMenuState();
 	}
 
 	void OnTriggerEnter(Collider other)
