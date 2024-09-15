@@ -44,7 +44,10 @@ public class GroundSpawner : MonoBehaviour
     void SpawnGroundRow(float x, float y)
     {
         GameObject ground = Instantiate(groundPrefab, new Vector3(x, y, 0), Quaternion.identity);
-        ObstacleGenerator.SpawnObstacle(ground, obstaclePrefab, new Vector3(x, y, 0));
+		if ( y > 3)
+		{
+			ObstacleGenerator.SpawnObstacle(ground, obstaclePrefab, new Vector3(x, y, 0));
+		}
     }
 
     void OnEnable()
