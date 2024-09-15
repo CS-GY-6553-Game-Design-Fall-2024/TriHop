@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
@@ -95,4 +96,21 @@ public class PlayerInput : MonoBehaviour
         // If we are sufficiently close to the target position (or if journeyFrac == 1f), then we stop the jump
         if (journeyFrac == 1f) m_jumping = false;
     }
+	
+	private void GameOver()
+	{
+		Time.timeScale = 1;
+		ObstacleGenerator.ResetObstacles();
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		if(other.gameObject.tag == "obstacle")
+		{
+			Invoke("GameOver",0.03f);
+			Time.timeScale = 0.07f;
+		}
+	}
+	
 }
