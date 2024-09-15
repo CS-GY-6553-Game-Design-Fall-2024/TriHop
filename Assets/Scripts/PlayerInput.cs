@@ -7,7 +7,6 @@ public class PlayerInput : MonoBehaviour
     public enum PlayerSide { Left=-1, Right=1 }
     
     [Header("=== Player Settings ===")]
-    [SerializeField] private KeyCode m_jumpButton = KeyCode.Space;
     [SerializeField] private PlayerSide m_playerSide = PlayerSide.Right;
     [SerializeField] private Transform m_leftTarget;
     [SerializeField] private Transform m_rightTarget;
@@ -45,13 +44,12 @@ public class PlayerInput : MonoBehaviour
 
     private PlayerSide CheckPlayerInput() {
         // Check the condition of whatever the jump button we set.
-        bool isHeldDown = Input.GetKey(m_jumpButton);
+        bool isHeldDown = Input.GetKey(TempleJump.current.interactionKey);
 
         // Based on the button condition, which side should the player be on?
         PlayerSide intendedLane = (isHeldDown) ? PlayerSide.Left : PlayerSide.Right;
 
         // Return the intended side.
-        if (isHeldDown) Debug.Log("BUTTON HELD DOWN");
         return intendedLane;
     }
 
