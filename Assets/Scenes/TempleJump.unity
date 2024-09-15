@@ -866,6 +866,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 4575ded25ea7e2c41a41bccaa6de60d4, type: 3}
     - target: {fileID: 1682998249654635491, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
+      propertyPath: m_minJumpSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682998249654635491, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
       propertyPath: m_winSpinSpeed
       value: 1.5
       objectReference: {fileID: 0}
@@ -878,8 +882,72 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1682998249654635491, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
+      propertyPath: m_sizeCurve.m_Curve.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682998249654635491, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
       propertyPath: m_jumpIncreaseCurve.m_Curve.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682998249654635491, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
+      propertyPath: m_sizeCurve.m_Curve.Array.data[1].time
+      value: 0.25019875
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682998249654635491, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
+      propertyPath: m_sizeCurve.m_Curve.Array.data[2].time
+      value: 0.748821
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682998249654635491, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
+      propertyPath: m_sizeCurve.m_Curve.Array.data[3].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682998249654635491, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
+      propertyPath: m_sizeCurve.m_Curve.Array.data[1].value
+      value: 0.99916834
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682998249654635491, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
+      propertyPath: m_sizeCurve.m_Curve.Array.data[2].value
+      value: 1.0000652
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682998249654635491, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
+      propertyPath: m_sizeCurve.m_Curve.Array.data[3].value
+      value: -0.0000066217035
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682998249654635491, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
+      propertyPath: m_sizeCurve.m_Curve.Array.data[1].inSlope
+      value: 0.004790678
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682998249654635491, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
+      propertyPath: m_sizeCurve.m_Curve.Array.data[2].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682998249654635491, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
+      propertyPath: m_sizeCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682998249654635491, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
+      propertyPath: m_sizeCurve.m_Curve.Array.data[1].outSlope
+      value: 0.004790678
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682998249654635491, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
+      propertyPath: m_sizeCurve.m_Curve.Array.data[2].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682998249654635491, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
+      propertyPath: m_sizeCurve.m_Curve.Array.data[2].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682998249654635491, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
+      propertyPath: m_sizeCurve.m_Curve.Array.data[2].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682998249654635491, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
+      propertyPath: m_sizeCurve.m_Curve.Array.data[1].tangentMode
+      value: 136
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682998249654635491, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
+      propertyPath: m_sizeCurve.m_Curve.Array.data[2].tangentMode
+      value: 136
       objectReference: {fileID: 0}
     - target: {fileID: 1682998249654635491, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
       propertyPath: m_jumpIncreaseCurve.m_Curve.Array.data[1].time
