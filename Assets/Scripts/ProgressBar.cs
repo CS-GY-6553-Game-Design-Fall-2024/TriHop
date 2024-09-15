@@ -8,8 +8,9 @@ public class ProgressBar : MonoBehaviour
 
     private float elapsedTime = 0f;
 
-    void Start()
+    void OnEnable()
     {
+        elapsedTime = 0f;
         progressBarFill.anchoredPosition = new Vector2(progressBarFill.anchoredPosition.x, -progressBarBackground.rect.height / 2);
     }
 

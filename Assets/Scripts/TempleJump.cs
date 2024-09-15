@@ -84,6 +84,7 @@ public class TempleJump : MonoBehaviour
 
         // Secondly, deactive the ground spawner. We DON'T disable the player though.
         m_groundSpawner.gameObject.SetActive(false);
+        m_player.gameObject.SetActive(true);
         m_player.transform.rotation = Quaternion.identity;
 
         // Thirdly, use the boolean check to prevent the interaction key from auto-triggering the play mode if held down.
@@ -91,6 +92,7 @@ public class TempleJump : MonoBehaviour
 
         // Lastly, hide the playing canvas and show the menu + lose canvases
         m_playingCanvas.gameObject.SetActive(false);
+        m_winCanvas.gameObject.SetActive(false);
         m_menuCanvas.gameObject.SetActive(true);
         m_loseCanvas.gameObject.SetActive(true);
     }
@@ -100,6 +102,7 @@ public class TempleJump : MonoBehaviour
 
         // Secondly, deactive the ground spawner. We DON'T disable the player though.
         m_groundSpawner.gameObject.SetActive(false);
+        m_player.gameObject.SetActive(true);
         m_player.transform.rotation = Quaternion.identity;
 
         // Thirdly, use the boolean check to prevent the interaction key from auto-triggering the play mode if held down.
@@ -107,6 +110,7 @@ public class TempleJump : MonoBehaviour
 
         // Lastly, hide the playing canvas and show the menu + win canvases
         m_playingCanvas.gameObject.SetActive(false);
+        m_loseCanvas.gameObject.SetActive(false);
         m_menuCanvas.gameObject.SetActive(true);
         m_winCanvas.gameObject.SetActive(true);
     }

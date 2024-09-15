@@ -18,7 +18,7 @@ public class GroundSpawner : MonoBehaviour
     public float speedIncreaseRate = 0.06f; // 0.06 reaches speed 10 in about 2 mins
     [SerializeField] private List<GameObject> m_groundObjects;
 
-    private float elapsedTime = 0f;
+    [SerializeField] private float elapsedTime = 0f;
     public bool GameEnded = false;
 
     // Because this script can be activated and deactivate by `TempleJump`, we want to control this scripts on and off state via `OnEnable()` and `OnDisable()`.
@@ -27,6 +27,7 @@ public class GroundSpawner : MonoBehaviour
         m_groundObjects = new List<GameObject>();
 
         // Set the ground movement to the initial speed + Add a listener to the OnRowDeleted event
+        elapsedTime = 0f;
         GroundMovement.SetSpeed(initialSpeed);
         GroundMovement.OnRowDeleted += HandleRowDeleted;
 

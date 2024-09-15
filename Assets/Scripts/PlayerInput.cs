@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    public static PlayerInput current;
     public enum PlayerSide { Left=-1, Right=1 }
     
     [Header("=== Player Settings ===")]
@@ -22,6 +23,10 @@ public class PlayerInput : MonoBehaviour
     private bool m_jumping = false;
     private float m_totalJumpTime, m_jumpStartTime;
     private Vector3 m_startPos, m_endPos;
+
+    private void Awake() {
+        current = this;
+    }
 
     public void ResetPlayer() {
         // If this is called, then we will have to:

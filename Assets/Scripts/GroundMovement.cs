@@ -9,7 +9,7 @@ public class GroundMovement : MonoBehaviour
 
     [SerializeField] private SpriteRenderer m_spriteRenderer;
     [SerializeField] private Sprite[] m_tiles;
-    private static float speed = 5f;
+    [SerializeField] private static float speed = 5f;
 
 
     void Start() {
