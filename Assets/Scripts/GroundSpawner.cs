@@ -9,6 +9,7 @@ public class GroundSpawner : MonoBehaviour
     [Header("=== References ===")]
     public GameObject groundPrefab;
     public GameObject obstaclePrefab;
+    public Sprite[] m_groundTiles;
 
     [Header("=== Spawner Settings ===")]
     public float gameDuration = 180f;

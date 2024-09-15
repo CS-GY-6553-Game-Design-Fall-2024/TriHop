@@ -8,7 +8,7 @@ public class PlayerInput : MonoBehaviour
     public enum PlayerSide { Left=-1, Right=1 }
     
     [Header("=== Player Settings ===")]
-    [SerializeField] private PlayerSide m_playerSide = PlayerSide.Right;
+    [SerializeField] private Collider m_collider;
     [SerializeField] private Transform m_leftTarget;
     [SerializeField] private Transform m_rightTarget;
     [SerializeField] private float m_jumpSpeed = 2f;
@@ -83,6 +83,9 @@ public class PlayerInput : MonoBehaviour
         // We prevent jumping if we're not jumping
         if (!m_jumping) return;
 
+        // Disable the collider on this player object
+        m_collider.enabled = false;
+
         // How much of the fraction of the journey are we at? We clamp between 0 and 1
         float journeyFrac = Mathf.Clamp((Time.time - m_jumpStartTime) / m_totalJumpTime, 0f, 1f);
         
@@ -94,7 +97,10 @@ public class PlayerInput : MonoBehaviour
         transform.localScale = new Vector3(m_localScale, m_localScale, m_localScale);
         
         // If we are sufficiently close to the target position (or if journeyFrac == 1f), then we stop the jump
-        if (journeyFrac == 1f) m_jumping = false;
+        if (journeyFrac == 1f) {
+            m_collider.enabled = true;
+            m_jumping = false;
+        }
     }
 	
 	private void GameOver()

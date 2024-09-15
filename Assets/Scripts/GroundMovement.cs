@@ -1,11 +1,20 @@
 using UnityEngine;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class GroundMovement : MonoBehaviour
 {
     public static event RowDeletedDelegate OnRowDeleted;
     public delegate void RowDeletedDelegate(GameObject g, float x);
 
+    [SerializeField] private SpriteRenderer m_spriteRenderer;
+    [SerializeField] private Sprite[] m_tiles;
     private static float speed = 5f;
+
+
+    void Start() {
+        m_spriteRenderer.sprite = m_tiles[Random.Range(0, m_tiles.Length)];
+    }
 
     void Update()
     {

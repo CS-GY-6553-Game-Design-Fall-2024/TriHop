@@ -215,10 +215,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundPrefab: {fileID: 4869513122884939156, guid: cb8b3c12e6acd574bacd1773683b43dc, type: 3}
   obstaclePrefab: {fileID: 1970523187593155194, guid: 5daa9dec99e8a4104b40569413334792, type: 3}
+  m_groundTiles:
+  - {fileID: -678519947, guid: 3e24980f686d79846ab0d127f1ac5147, type: 3}
+  - {fileID: -121742491, guid: 3e24980f686d79846ab0d127f1ac5147, type: 3}
+  - {fileID: -1242176650, guid: 3e24980f686d79846ab0d127f1ac5147, type: 3}
+  - {fileID: 1064141877, guid: 3e24980f686d79846ab0d127f1ac5147, type: 3}
+  - {fileID: 1780375359, guid: 3e24980f686d79846ab0d127f1ac5147, type: 3}
   gameDuration: 180
   initialSpeed: 2
   maxSpeed: 10
   speedIncreaseRate: 0.06
+  m_groundObjects: []
   GameEnded: 0
 --- !u!4 &556728032
 Transform:
@@ -797,6 +804,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1682998249654635491, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
+      propertyPath: m_collider
+      value: 
+      objectReference: {fileID: 1570208613}
+    - target: {fileID: 1682998249654635491, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
       propertyPath: m_leftTarget
       value: 
       objectReference: {fileID: 521408275}
@@ -1058,6 +1069,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &1570208613 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 5870395124279274656, guid: 093676b66bc38ab48ae8bbc996af4187, type: 3}
+  m_PrefabInstance: {fileID: 1348603941}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1673560581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,6 +1239,7 @@ MonoBehaviour:
   m_interactionKey: 32
   m_groundSpawner: {fileID: 556728031}
   m_player: {fileID: 1059584682}
+  m_canSetPlayMode: 1
   m_debugMode: 0
   m_activateDebugKey: 13
   m_toggleMenuStateKey: 49
