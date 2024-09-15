@@ -88,6 +88,6 @@ public class GroundSpawner : MonoBehaviour
     void EndGame()
     {
         GameEnded = true;
-        this.enabled = false;
+        TempleJump.current.SetWinState();
     }
 }
