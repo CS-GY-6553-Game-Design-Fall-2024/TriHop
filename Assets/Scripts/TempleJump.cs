@@ -5,6 +5,7 @@ using UnityEngine;
 public class TempleJump : MonoBehaviour
 {
     public enum GameState { Menu, Play }
+    public static TempleJump current;
     
     [Header("=== Current Game State ===")]
     [SerializeField] private GameState m_gameState = GameState.Menu;
@@ -15,6 +16,8 @@ public class TempleJump : MonoBehaviour
     [SerializeField] private Canvas m_debugCanvas;
 
     [Header("=== Game Mechanic Controllers ===")]
+    [SerializeField] private KeyCode m_interactionKey = KeyCode.Space;
+    public KeyCode interactionKey => m_interactionKey;  // Make it accessible to onlookers
     [SerializeField] private GroundSpawner m_groundSpawner;
     [SerializeField] private PlayerInput m_player;
 
@@ -24,12 +27,19 @@ public class TempleJump : MonoBehaviour
     [SerializeField] private KeyCode m_toggleMenuStateKey = KeyCode.Alpha1;
     [SerializeField] private KeyCode m_togglePlayStateKey = KeyCode.Alpha2;
 
+    private void Awake() {
+        current = this;
+    }
+
     private void Start() {
         SetDebugMode(false);
         SetMenuState();
     }
 
     private void Update() {
+        // If we're not in the menu, then the space bar interaction that "starts" the play mode shouldn't work.
+        if (m_gameState == GameState.Menu && Input.GetKeyDown(m_interactionKey)) SetPlayState();
+        // Purely for debug purposes
         UpdateDebug();
     }
 
