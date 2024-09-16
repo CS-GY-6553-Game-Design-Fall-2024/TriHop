@@ -21,6 +21,8 @@ public class GroundSpawner : MonoBehaviour
     [SerializeField] private float elapsedTime = 0f;
     public float elapsedFraction => Mathf.Clamp(elapsedTime / gameDuration, 0f, 1f);
     public bool GameEnded = false;
+    private int leftCounter = 0;
+	private int rightCounter = 0;
 
     // Because this script can be activated and deactivate by `TempleJump`, we want to control this scripts on and off state via `OnEnable()` and `OnDisable()`.
     private void OnEnable() {
@@ -65,11 +67,26 @@ public class GroundSpawner : MonoBehaviour
 
     void SpawnGroundRow(float x, float y)
     {
+		if( x < 0 )
+		{
+			leftCounter++;
+		}
+		else
+		{
+			rightCounter++;
+		}
         GameObject ground = Instantiate(groundPrefab, new Vector3(x, y, 0), Quaternion.identity);
         m_groundObjects.Add(ground);
 		if ( y > 3)
 		{
-			ObstacleGenerator.SpawnObstacle(ground, obstaclePrefab, new Vector3(x, y, 0));
+			if (x<0)
+			{
+				ObstacleGenerator.SpawnObstacle(ground, obstaclePrefab, new Vector3(x, y, 0), leftCounter);
+			}
+			else
+			{
+				ObstacleGenerator.SpawnObstacle(ground, obstaclePrefab, new Vector3(x, y, 0), rightCounter);
+			}
 		}
     }
 
